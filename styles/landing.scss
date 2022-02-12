@@ -1,0 +1,458 @@
+.page-container {
+	
+}
+
+.navbar-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: transparent;
+	min-height: 3rem;
+	padding: 1rem 5vw;
+	position: fixed;
+	width: 100vw;
+	z-index: 5;
+	transition: all 0.4s ease-in-out;
+
+	&.scroll {
+		background-color: #000;
+		transition: all 0.4s ease-in-out;
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	}
+
+	.navbar-links-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		.navbar-link {
+			margin: 0 0.5rem;
+			font-size: 1.1rem;
+			color: white;
+			transition: all 0.45s ease;
+
+			&:hover {
+				color: var(--primary);
+			}
+		}
+	}
+
+	.logo-text {
+		font-family: "Oleo Script Swash Caps", cursive;
+		font-size: 2.4rem;
+		color: white;
+	}
+}
+
+@media (max-width: 600px) {
+	.navbar-links-container {
+		display: none !important;
+	}
+}
+
+//
+.header-container {
+	max-height: 800px;
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 0 5vw;
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 45vw;
+		height: 45vw;
+		max-width: 700px;
+		max-height: 700px;
+		border-radius: 25vw;
+		background: linear-gradient(180deg, rgba(48, 233, 17, 0.5) 0%, rgba(255, 255, 255, 0.217234) 56.55%, rgba(255, 255, 255, 0) 100%);
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+		backdrop-filter: blur(120px);
+		top: -10vw;
+		z-index: 1;
+		left: -10vw;
+		opacity: 0.5;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 45vw;
+		height: 45vw;
+		min-width: 200px;
+		min-height: 200px;
+		max-width: 700px;
+		max-height: 700px;
+		border-radius: 100%;
+		background: var(--primary);
+		bottom: -30.5vw;
+		left: 30vw;
+		z-index: 1;
+		opacity: 0.5;
+	}
+
+	.text-container {
+		z-index: 2;
+		.subheading {
+			font-size: 1.45rem;
+			color: white;
+			margin: 0;
+			font-weight: 600;
+			letter-spacing: 0.7px;
+		}
+		.heading {
+			font-family: "Oleo Script Swash Caps", cursive;
+			font-size: 3.7rem;
+			color: var(--primary);
+			// color: #31e91128;
+			// background-image: url(https://media.giphy.com/media/Y3pWLF3gLBxzZlbY9l/giphy-downsized-large.gif);
+			background-size: cover;
+			-moz-background-clip: text;
+			-webkit-background-clip: text;
+		}
+
+		.text {
+			color: grey;
+			font-size: 1rem;
+			letter-spacing: 0.5px;
+			max-width: 600px;
+			margin-top: 1rem;
+		}
+	}
+
+	.links-container {
+		position: absolute;
+		bottom: 1.5vw;
+		right: 2.5vw;
+		align-items: center;
+
+		i {
+			color: white;
+			font-size: 1.7rem;
+			margin: 0 1rem;
+			transition: all 0.4s ease;
+			cursor: pointer;
+
+			&:hover {
+				color: var(--primary);
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.header-container {
+		.heading {
+			font-size: 2.5rem;
+			line-height: 3.5rem;
+			margin-top: 1rem;
+		}
+
+		.text {
+			font-size: 0.8rem;
+			line-height: 1.3rem;
+			margin-top: 1rem;
+		}
+	}
+}
+
+.section {
+	min-height: 400px;
+	padding: 4rem 5vw 1rem 5vw;
+}
+
+.section-text {
+	font-size: 1rem;
+	line-height: 1.5rem;
+	color: grey;
+	margin-top: 1rem;
+	p {
+		margin: 0.75rem;
+	}
+}
+
+.section-heading {
+	font-size: 1.6rem;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 0.1rem;
+	margin-top: 1rem;
+	color: #000000d8;
+	text-align: center;
+}
+
+.section-subheading {
+	font-size: 1.3rem;
+	font-weight: 400;
+	letter-spacing: 0.1rem;
+	margin-top: 1rem;
+	color: #000000d8;
+	text-align: center;
+}
+
+// About Section
+.about-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	.about-image {
+		height: 300px;
+		width: 300px;
+		max-width: 95vw;
+		max-height: 95vw;
+		align-self: center;
+	}
+	.section-text {
+		margin-top: 1rem;
+		text-align: center;
+		max-width: 1000px;
+	}
+}
+
+.row-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 5rem;
+}
+
+// Skills Section
+
+.box-container {
+	width: 350px;
+	min-height: 200px;
+	margin: 1rem;
+	border-radius: 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.41);
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.41);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.41);
+	cursor: pointer;
+	transition: all 0.4s ease;
+
+	.box-image {
+		height: 9rem;
+		width: 9rem;
+		margin-bottom: 2rem;
+		margin-top: 1.5rem;
+	}
+
+	&:hover {
+		box-shadow: 0px -1px 18px 0px rgba(0, 0, 0, 0.41);
+		-webkit-box-shadow: 0px -1px 18px 0px rgba(0, 0, 0, 0.41);
+		-moz-box-shadow: 0px -1px 18px 0px rgba(0, 0, 0, 0.41);
+	}
+
+	.box-name {
+		font-size: 1.2rem;
+		font-weight: 600;
+		// color: var(--primary);
+		margin-top: 0.5rem;
+		text-align: center;
+	}
+
+	.box-text {
+		font-size: 0.9rem;
+		line-height: 1.5rem;
+		color: grey;
+		margin-top: 1rem;
+		text-align: center;
+	}
+}
+
+// work section
+
+.work-image-container {
+	max-width: 45%;
+	min-width: 290px;
+	max-height: 500px;
+	margin: 1rem;
+	border: 1px solid var(--primary);
+	padding: 1.5rem;
+	border-radius: 5px;
+	transition: all 0.4s ease;
+
+	&:hover {
+		box-shadow: 0px -1px 18px 0px rgba(0, 0, 0, 0.41);
+		-webkit-box-shadow: 0px -1px 18px 0px rgba(0, 0, 0, 0.41);
+		-moz-box-shadow: 0px -1px 18px 0px rgba(0, 0, 0, 0.41);
+	}
+
+	.work-image {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		border-radius: 10px;
+		transition: all 0.4s ease;
+		cursor: pointer;
+
+		&.no-cover {
+			object-fit: contain;
+		}
+	}
+}
+
+.contact-section {
+	background-color: #f5f5f5;
+	margin-top: 5rem;
+}
+
+.contact-section-row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.inner-container {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 5rem;
+		max-width: 1200px;
+		width: 100%;
+	}
+
+	.left-side {
+		min-width: 45%;
+		padding-top: 2rem;
+		min-height: 100%;
+		padding-left: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+
+		.contact-info-row {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-bottom: 4rem;
+			margin-top: -1rem;
+
+			i {
+				font-size: 3rem;
+				color: var(--primary);
+				margin-right: 1rem;
+				min-width: 3rem;
+			}
+
+			.text-container {
+				border-left: 1px solid lightgrey;
+				padding-left: 2rem;
+
+				.info-name {
+					font-size: 1.1rem;
+					text-transform: uppercase;
+					margin-bottom: 0.5rem;
+					font-weight: 500;
+				}
+
+				.info-detail {
+					font-size: 0.95rem;
+					word-wrap: break-word;
+					word-break: break-all;
+					color: grey;
+				}
+			}
+		}
+	}
+
+	.right-side {
+		min-width: 55%;
+
+		form.contact-form-container {
+			display: flex;
+			padding: 2rem;
+			flex-direction: column;
+
+			input {
+				padding: 1rem 1rem;
+				border-radius: 3px;
+				border: 1px solid lightgrey;
+				margin: 1rem 0;
+				font-size: 0.9rem;
+				font-family: "Poppins", sans-serif;
+			}
+
+			textarea {
+				min-height: 7rem;
+				padding: 0.5rem 1rem;
+				border-radius: 3px;
+				border: 1px solid lightgrey;
+				margin: 1rem 0;
+				font-size: 0.9rem;
+				font-family: "Poppins", sans-serif;
+			}
+
+			.submit-button {
+				width: 8rem;
+				height: 3rem;
+				padding: 0;
+				margin-left: auto;
+				border: none;
+				font-size: 1.05rem;
+				color: white;
+				font-family: "Poppins", sans-serif;
+				background-color: var(--primary);
+			}
+		}
+	}
+}
+
+.footer-container {
+	min-height: 200px;
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.footer-logo {
+		font-family: "Oleo Script Swash Caps", cursive;
+		font-size: 2rem;
+		color: white;
+		margin-bottom: 1rem;
+	}
+
+	i {
+		color: white;
+		font-size: 1.2rem;
+		margin: 0 1rem;
+		transition: all 0.4s ease;
+		cursor: pointer;
+	}
+
+	.footer-text {
+		color: white;
+		font-family: "Oleo Script Swash Caps", cursive;
+		font-size: 0.95rem;
+		letter-spacing: 1px;
+		text-align: center;
+		margin-top: 1rem;
+	}
+}
+
+@media (max-width: 960px) {
+	.contact-section-row .inner-container {
+		flex-direction: column;
+	}
+
+	.contact-section .left-side,
+	.right-side form.contact-form-container {
+		padding: 0 !important;
+	}
+}

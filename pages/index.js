@@ -1,7 +1,47 @@
 import Head from 'next/head'
-
+import {useState} from 'react'
 
 export default function Home() {
+  const [inputValues, setInputValues] = useState({name: '', email: '', subject: '', message: ''})
+  const [showThankYouMessage, setShowThankYouMessage] = useState(false)
+
+  const handleInputChange = (e) => {
+    const {name, value} = e.target
+    setInputValues({...inputValues, [name]: value})
+  }
+
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    console.log("Sending form message")
+    fetch(`${process.env.NEXT_PUBLIC_FORM_URL}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        "name": inputValues.name,
+        "email": inputValues.email,
+        "subject": inputValues.subject,
+        "message": inputValues.message,
+        "fields": {
+          "device": window.navigator.userAgent,
+        }
+      })
+    }).then(res => setShowThankYouMessage(true))
+      .catch(err => {})
+    setInputValues({name: '', email: '', subject: '', message: ''})
+    setShowThankYouMessage(true)
+  }
+
+
+  const handleRequestCV = () => {
+    setInputValues({
+      ...inputValues,
+      subject: "CV Request",
+      message: 'I would like to see your CV, you can send it to me at the email address provided above'
+    })
+  }
+
+
+
   return (
     <div>
       <Head>
@@ -19,9 +59,8 @@ export default function Home() {
           <div className="logo-text">Amaka</div>
           <div className="navbar-links-container">
             <a href='#about' className="navbar-link">About</a>
-            <a href='#projects' className="navbar-link">Projects</a>
-            <a href='#projects' className="navbar-link">Skills</a>
-            <a href='#projects' className="navbar-link">Services</a>
+            <a href='#works' className="navbar-link">Works</a>
+            <a href='#services' className="navbar-link">Services</a>
             <a href='#contact' className="navbar-link">Contact</a>
           </div>
         </div>
@@ -31,18 +70,22 @@ export default function Home() {
             <h3 className='subheading'>Hello! 👋 I am</h3>
             <h1 className='heading'>Chiamaka Onyejegbu</h1>
             <div className='text'>I’m a creative user experience and web designer. I love to create easy and convenient Designs, that solves Users problems.</div>
+            <div className="buttons-container">
+              <a href='#contact' onClick={() => handleRequestCV()}><div className="button">Request CV</div></a>
+              <div className="button primary">Hire Me</div>
+            </div>
           </div>
           <div className='links-container'>
-            <a target="_blank">
+            <a target="_blank" href='https://www.behance.net/amakamac'>
               <i aria-hidden="false" className="fab fa-behance-square"></i>
             </a>
-            <a target="_blank">
+            <a target="_blank" href="https://www.instagram.com/invites/contact/?i=mxh1eveyp6r2&utm_content=mqssekq">
               <i className="fab fa-instagram"></i>
             </a>
-            <a target="_blank">
+            <a target="_blank" href='https://www.linkedin.com/in/chiamaka-onyejegbu-08b815181'>
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a target="_blank">
+            <a target="_blank" href="https://dribbble.com/amakamac" >
               <i className="fab fa-dribbble"></i>
             </a>
           </div>
@@ -95,7 +138,7 @@ export default function Home() {
         </div>
         {/* Skills Section End */}
         {/* Services Section Start */}
-        <div className="skills-section section" id='skills'>
+        <div className="skills-section section" id='services'>
           <h3 className="section-heading">MY Services</h3>
 
           <div className="row-container">
@@ -125,24 +168,48 @@ export default function Home() {
           </div>
         </div>
         {/* Work Section Start */}
-        <div className="skills-section section" id='skills'>
+        <div className="skills-section section" id='works'>
           <h3 className="section-heading">My Work</h3>
           <div className="row-container">
             {/*  */}
             <div className='work-image-container'>
               <img src="/images/work-furniture.png" alt="Work 1" className='work-image' />
+              <div className='overlay-container'>
+                <div className='overlay-text'>Furniture - Modern Furniture eCommerce Website concept.</div>
+                <a href='https://www.figma.com/file/9kI06e8Bo1ORkJw53eCkDx/Furniture-Store?node-id=0%3A1' target="_blank">
+                  <div className='overlay-link'>Open Figma Link <i className='fa fa-link'></i></div>
+                </a>
+              </div>
             </div>
             {/*  */}
             <div className='work-image-container'>
               <img src="/images/work-dental.png" alt="Work 2" className='work-image' />
+              <div className='overlay-container'>
+                <div className='overlay-text'>Dental App - Application which user can find dentist online.</div>
+                <a href='https://www.figma.com/file/HP2QOpFLStQQCAV7avsjzQ/doc?node-id=1%3A2' target="_blank">
+                  <div className='overlay-link'>Open Figma Link <i className='fa fa-link'></i></div>
+                </a>
+              </div>
             </div>
             {/*  */}
             <div className='work-image-container'>
               <img src="/images/work-location.png" alt="Work 2" className='work-image no-cover' />
+              <div className='overlay-container'>
+                <div className='overlay-text'>Delivery App - A Location tracker concept design</div>
+                <a href='https://www.figma.com/file/jOd7x4UBYVriDy9Cjui8TK/Location-Tracker?node-id=0%3A1' target="_blank">
+                  <div className='overlay-link'>Open Figma Link <i className='fa fa-link'></i></div>
+                </a>
+              </div>
             </div>
             {/*  */}
             <div className='work-image-container'>
               <img src="/images/work-message.png" alt="Work 2" className='work-image' />
+              <div className='overlay-container'>
+                <div className='overlay-text'>Messaging App - Social media messaging application.</div>
+                <a href='https://www.figma.com/file/9kI06e8Bo1ORkJw53eCkDx/Furniture-Store?node-id=0%3A1' target="_blank">
+                  <div className='overlay-link'>Open Figma Link <i className='fa fa-link'></i></div>
+                </a>
+              </div>
             </div>
             {/*  */}
           </div>
@@ -179,20 +246,53 @@ export default function Home() {
                   <i className='fa fa-envelope'></i>
                   <div className="text-container">
                     <div className='info-name'>Email</div>
-                    <div className="info-detail">chiomaoyejegbu@gmail.com</div>
+                    <div className="info-detail">onyejegbuchiamaka@gmail.com</div>
                   </div>
                 </div>
                 {/*  */}
               </div>
               {/* Right side start */}
               <div className='right-side'>
-                <form className='contact-form-container'>
-                  <input placeholder='Name' type='text' />
-                  <input placeholder='Email' type='text' />
-                  <input placeholder='Subject' type='text' />
-                  <textarea placeholder='Message' />
-                  <input type="submit" value='Send' className='submit-button' />
-                </form>
+                {!showThankYouMessage ? <form className='contact-form-container' id="contact-form" onSubmit={handleFormSubmit}>
+                  <input
+                    placeholder='Name'
+                    type='text'
+                    required
+                    id="name-input"
+                    name='name'
+                    value={inputValues.name}
+                    onChange={handleInputChange} />
+                  <input
+                    placeholder='Email'
+                    type='text'
+                    required
+                    id="email-input"
+                    name='email'
+                    value={inputValues.email}
+                    onChange={handleInputChange} />
+                  <input
+                    placeholder='Subject'
+                    type='text'
+                    id='subject-input'
+                    name='subject'
+                    value={inputValues.subject}
+                    onChange={handleInputChange} />
+                  <textarea
+                    placeholder='Message'
+                    required
+                    id="message-input"
+                    name="message"
+                    value={inputValues.message}
+                    onChange={handleInputChange} />
+                  <input type="submit" value='Send' className='submit-button' onChange={handleInputChange} />
+                </form> : null}
+                {/*  */}
+                {showThankYouMessage ? <div className='thank-you-message'>
+                  <img src="/images/confetti.gif" alt="Thank You" className='thank-you-image' />
+                  <div className='message-heading'>Message Sent!</div>
+                  <div className='message-text'> Thank you for your message. I will get back to you as soon as possible.</div>
+                  <div className='button' onClick={() => setShowThankYouMessage(false)}>Send Another Message</div>
+                </div> : null}
               </div>
             </div>
           </div>
@@ -201,20 +301,20 @@ export default function Home() {
         <div className="footer-container">
           <div className='footer-logo'>Amaka</div>
           <div className='footer-links-container'>
-            <a target="_blank">
+            <a target="_blank" href='https://www.behance.net/amakamac'>
               <i aria-hidden="false" className="fab fa-behance-square"></i>
             </a>
-            <a target="_blank">
+            <a target="_blank" href="https://www.instagram.com/invites/contact/?i=mxh1eveyp6r2&utm_content=mqssekq">
               <i className="fab fa-instagram"></i>
             </a>
-            <a target="_blank">
+            <a target="_blank" href='https://www.linkedin.com/in/chiamaka-onyejegbu-08b815181'>
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a target="_blank">
+            <a target="_blank" href="https://dribbble.com/amakamac" >
               <i className="fab fa-dribbble"></i>
             </a>
           </div>
-          <div className='footer-text'>© 2022 Copyright  chiamaka onyejegbu All rights reserved.</div>
+          <div className='footer-text copyright-text'>© 2022 Copyright  chiamaka onyejegbu All rights reserved.</div>
         </div>
       </main>
     </div>

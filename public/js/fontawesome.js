@@ -1,24 +1,24 @@
 if (typeof window !== "undefined") {
   window.addEventListener("scroll", () => {
     var offset = window.pageYOffset;
-    if (offset > 1) {
+    if (offset > 150) {
       window.document.querySelector(".navbar-container").classList.add("scroll");
-    } else if (offset < 1) {
+    } else if (offset < 150) {
       window.document.querySelector(".navbar-container").classList.remove("scroll");
     }
   });
 
 
   window.FontAwesomeKitConfig = {
-    asyncLoading: { enabled: false },
-    autoA11y: { enabled: true },
+    asyncLoading: {enabled: false},
+    autoA11y: {enabled: true},
     baseUrl: "https://kit-pro.fontawesome.com",
     detectConflictsUntil: null,
     license: "pro",
     method: "css",
-    minify: { enabled: true },
-    v4FontFaceShim: { enabled: true },
-    v4shim: { enabled: true },
+    minify: {enabled: true},
+    v4FontFaceShim: {enabled: true},
+    v4shim: {enabled: true},
     version: "latest",
   };
   !(function () {
@@ -82,7 +82,7 @@ if (typeof window !== "undefined") {
             return new d(this);
           }),
           Object.defineProperty
-            ? Object.defineProperty(e, t, { get: n })
+            ? Object.defineProperty(e, t, {get: n})
             : e.__defineGetter__(t, n);
       }
       function d(e) {
@@ -234,8 +234,8 @@ if (typeof window !== "undefined") {
                 ("latest" === i.version ? "latest" : "v".concat(i.version)) +
                 "/svgs")),
             i.v4shim.enabled &&
-            e(s(i, { addOn: "-v4-shims", minify: i.minify.enabled })),
-            e(s(i, { minify: i.minify.enabled }), l, o)),
+            e(s(i, {addOn: "-v4-shims", minify: i.minify.enabled})),
+            e(s(i, {minify: i.minify.enabled}), l, o)),
           "css" === f.method &&
           (function (e, t) {
             var n,
@@ -251,22 +251,22 @@ if (typeof window !== "undefined") {
               e.v4shim.enabled &&
               (e.license,
                 e.asyncLoading.enabled
-                  ? c(s(e, { addOn: "-v4-shims", minify: e.minify.enabled }), t)
+                  ? c(s(e, {addOn: "-v4-shims", minify: e.minify.enabled}), t)
                   : d(
-                    s(e, { addOn: "-v4-shims", minify: e.minify.enabled }),
+                    s(e, {addOn: "-v4-shims", minify: e.minify.enabled}),
                     t
                   ));
             e.v4FontFaceShim.enabled &&
               (e.asyncLoading.enabled
                 ? c(
-                  s(e, { addOn: "-v4-font-face", minify: e.minify.enabled }),
+                  s(e, {addOn: "-v4-font-face", minify: e.minify.enabled}),
                   t
                 )
                 : d(
-                  s(e, { addOn: "-v4-font-face", minify: e.minify.enabled }),
+                  s(e, {addOn: "-v4-font-face", minify: e.minify.enabled}),
                   t
                 ));
-            var o = s(e, { minify: e.minify.enabled });
+            var o = s(e, {minify: e.minify.enabled});
             e.asyncLoading.enabled ? c(o, t) : d(o, t);
           })(f, m),
           m.detectingConflicts &&
@@ -298,7 +298,7 @@ if (typeof window !== "undefined") {
                 document.body.appendChild(e);
             }));
       }
-    } catch (e) { }
+    } catch (e) {}
   })();
 
 }
